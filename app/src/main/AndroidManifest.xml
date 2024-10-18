@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Empowering_The_Nation"
+        tools:targetApi="31" >
+        <activity
+            android:name=".FinalPage"
+            android:exported="false" />
+        <activity
+            android:name=".LifeSkillsInfo"
+            android:exported="false" />
+        <activity
+            android:name=".ChildMindingInfo"
+            android:exported="false" />
+        <activity
+            android:name=".ContactFees"
+            android:exported="false" />
+        <activity
+            android:name=".CookingInfo"
+            android:exported="false" />
+        <activity
+            android:name=".FirstAidInfo"
+            android:exported="false" />
+        <activity
+            android:name=".GardenInfo"
+            android:exported="false" />
+        <activity
+            android:name=".LandScapingInfo"
+            android:exported="false" />
+        <activity
+            android:name=".SewinInfo"
+            android:exported="false" />
+        <activity
+            android:name=".SixWeekCourses"
+            android:exported="false" />
+        <activity
+            android:name=".SixMonthsCourses"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="https://www.google.com/maps/d/edit?mid=1P3-LzOgo2cFmcDkN5nW9i5YIq4E9vco&amp;usp=sharing"/>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9D0C1"
+    tools:context=".SixWeekCourses">
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OUR SIX WEEK COURSES"
+        android:textColor="#b05d84"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Child Minding Course Section -->
+    <ImageView
+        android:id="@+id/childMindingImage"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:contentDescription="Child Minding Course"
+        app:srcCompat="@drawable/childminding"
+        app:layout_constraintTop_toBottomOf="@id/headerText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/childMindingText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:gravity="left"
+        android:text="Jobs:Nanny,Aupair.                          Purpose: To provide students with the necessary skillset to care and nurture children, to show them the importance of nutrition and a balanced diet when it comes to children.    skills provided:health, safety, play activities, nutrition, and communication with parents."
+        android:textColor="#6f3f2d"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/cookingText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/childMindingImage"
+        app:layout_constraintTop_toTopOf="@id/childMindingImage"
+        app:layout_constraintVertical_bias="0.12"
+        app:layout_constraintWidth_default="spread" />
+
+    <!-- Cooking Course Section -->
+
+    <Button
+        android:id="@+id/childBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#b05d84"
+        android:text="CHILD MINDING"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/childMindingImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/childMindingImage" />
+
+    <ImageView
+        android:id="@+id/cookingImage"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:contentDescription="Cooking Course"
+        app:srcCompat="@drawable/cooking"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/childBtn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/cookingText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="left"
+        android:text="Cooking: Teaches participants how to prepare healthy meals, meal planning, nutritional education, and essential cooking techniques for personal and professional use."
+        android:textColor="#6f3f2d"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/gardeningText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/cookingImage"
+        app:layout_constraintTop_toTopOf="@id/cookingImage"
+        app:layout_constraintVertical_bias="0.209"
+        app:layout_constraintWidth_default="spread" />
+
+    <!-- Garden Maintenance Course Section -->
+
+    <Button
+        android:id="@+id/cookingBtn"
+        android:layout_width="144dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#b05d84"
+        android:text="COOKING"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/cookingImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cookingImage" />
+
+
+    <ImageView
+        android:id="@+id/gardeningImage"
+        android:layout_width="137dp"
+        android:layout_height="119dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Garden Maintenance Course"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cookingBtn"
+        app:srcCompat="@drawable/garden" />
+
+    <TextView
+        android:id="@+id/gardeningText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="left"
+        android:text="Garden Maintenance: Covers gardening techniques like planting, pruning, pest management, and sustainable gardening practices. Ideal for both professional and home gardeners."
+        android:textColor="#6f3f2d"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/gardeningImage"
+        app:layout_constraintTop_toTopOf="@id/gardeningImage"
+        app:layout_constraintVertical_bias="0.028"
+        app:layout_constraintWidth_default="spread" />
+
+    <Button
+        android:id="@+id/gardenBtn"
+        android:layout_width="228dp"
+        android:layout_height="41dp"
+        android:backgroundTint="#b05d84"
+        android:text="GARDEN MAINTENANCE"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/gardeningImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gardeningImage" />
+
+    <Button
+        android:id="@+id/sixMonthsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#b05d84"
+        android:text="VIEW SIX MONTHS COURSES"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gardenBtn" />
+
+    <Button
+        android:id="@+id/contactfeesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#b05d84"
+        android:text="GO TO CALCULATE FEES"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.916" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

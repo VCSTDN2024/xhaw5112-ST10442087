@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const coursePrices = {
+            "Sewing": 1500,
+            "Landscaping": 1500,
+            "First Aid": 1500,
+            "Life Skills": 1500,
+            "Child Minding": 750,
+            "Cooking": 750,
+            "Garden Maintenance": 750
+        };
+
+        function calculateTotal() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            let subtotal = 0;
+
+            checkboxes.forEach((checkbox) => {
+                subtotal += coursePrices[checkbox.value];
+            });
+
+            let discount = 0;
+            const courseCount = checkboxes.length;
+            if (courseCount === 2) {
+                discount = subtotal * 0.05;
+            } else if (courseCount === 3) {
+                discount = subtotal * 0.10;
+            } else if (courseCount >= 4) {
+                discount = subtotal * 0.15;
+            }
+
+            const total = subtotal - discount;
+
+            document.getElementById('subtotal').textContent = `R${subtotal.toFixed(2)}`;
+            document.getElementById('discount').textContent = `R${discount.toFixed(2)}`;
+            document.getElementById('total').textContent = `R${total.toFixed(2)}`;
+        }
+
+        function goToUserInfo() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedCourses = Array.from(checkboxes).map(checkbox => checkbox.value);
+            const coursesParam = encodeURIComponent(selectedCourses.join(','));
+            window.location.href = `Users information.html?courses=${coursesParam}`;
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 p-10">
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center py-4">
+            <div class="flex space-x-8">
+                <a href="About us.html" class="text-gray-800 font-semibold">About us</a>
+                <a href="six month courses 1.HTML" class="text-gray-800 font-semibold">Six Month Courses 1</a>
+                <a href="six months courses 2.html" class="text-gray-800 font-semibold">Six Month Courses 2</a>
+                <a href="six week courses 1.HTML" class="text-gray-800 font-semibold">Six Week Courses 1</a>
+                <a href="six week courses 2.html" class="text-gray-800 font-semibold">Six Week Courses 2</a>
+                <a href="contact and media.html" class="text-gray-800 font-semibold">Contact and Media</a>
+                <a href="Checkout.html" class="text-gray-800 font-semibold">Contact us</a>
+                <a href="Users information.html" class="text-gray-800 font-semibold">User Information</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-brown-600">Check Out</h1>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6 mb-12">
+            <div>
+                <h2 class="text-lg font-semibold text-brown-600">Options to choose from:</h2>
+                <ul class="mt-2 text-brown-600 space-y-2">
+                    <li><input type="checkbox" value="Sewing"> Sewing (R1500)</li>
+                    <li><input type="checkbox" value="Landscaping"> Landscaping (R1500)</li>
+                    <li><input type="checkbox" value="First Aid"> First Aid (R1500)</li>
+                    <li><input type="checkbox" value="Life Skills"> Life Skills (R1500)</li>
+                    <li><input type="checkbox" value="Child Minding"> Child Minding (R750)</li>
+                    <li><input type="checkbox" value="Cooking"> Cooking (R750)</li>
+                    <li><input type="checkbox" value="Garden Maintenance"> Garden Maintenance (R750)</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-lg font-semibold text-brown-600">Discount Options:</h2>
+                <ul class="mt-2 text-brown-600 space-y-2">
+                    <li>1 course chosen = no discount</li>
+                    <li>2 courses chosen = 5% discount</li>
+                    <li>3 courses chosen = 10% discount</li>
+                    <li>4+ courses chosen = 15% discount</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6 mb-8 items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-lg font-semibold text-brown-600">Chosen course(es):</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-lg font-semibold text-brown-600">Sub-total:</span>
+                <span id="subtotal" class="font-bold text-brown-600">R0.00</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-lg font-semibold text-brown-600">Discount:</span>
+                <span id="discount" class="font-bold text-brown-600">R0.00</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-2 mb-8">
+            <span class="text-lg font-semibold text-brown-600">Total:</span>
+            <span id="total" class="font-bold text-brown-600">R0.00</span>
+        </div>
+
+        <div class="flex justify-between">
+            <button onclick="calculateTotal()" class="px-6 py-2 bg-pink-200 text-brown-600 font-semibold rounded hover:bg-pink-300">
+                Calculate
+            </button>
+            <button onclick="goToUserInfo()" class="px-6 py-2 bg-pink-200 text-brown-600 font-semibold rounded hover:bg-pink-300">
+                Check Out
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

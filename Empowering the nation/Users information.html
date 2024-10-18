@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        .highlight {
+            border: 2px solid red; /* Highlight with a red border */
+        }
+    </style>
+</head>
+
+<body class="bg-pink-200 p-10">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <div class="flex items-center mb-8">
+            <img src="23.jpg" alt="Logo" class="h-16 mr-4">
+            <h1 class="text-3xl font-semibold text-purple-700">Our Six Month Courses</h1>
+        </div>
+
+        <div id="selectedCourses" class="mb-4 text-lg font-semibold text-pink-700"></div>
+        
+        <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-6">
+            <h2 class="text-lg font-semibold text-brown-600">Selected Courses:</h2>
+            <div id="courseList" class="mt-2 text-brown-600"></div>
+            <div id="totalPrice" class="mt-2 text-brown-600 font-bold"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 mb-12">
+            <div>
+                <label for="name" class="block text-lg font-medium text-pink-700 mb-2">Name</label>
+                <input type="text" id="name" class="w-full p-3 border border-pink-300 rounded-lg" placeholder="Your Name">
+            </div>
+            <div>
+                <label for="surname" class="block text-lg font-medium text-pink-700 mb-2">Surname</label>
+                <input type="text" id="surname" class="w-full p-3 border border-pink-300 rounded-lg" placeholder="Your Surname">
+            </div>
+            <div>
+                <label for="email" class="block text-lg font-medium text-pink-700 mb-2">Enter a valid email</label>
+                <input type="email" id="email" class="w-full p-3 border border-pink-300 rounded-lg" placeholder="Email">
+            </div>
+
+            <div>
+                <label for="phone" class="block text-lg font-medium text-pink-700 mb-2">Enter a valid phone number</label>
+                <input type="tel" id="phone" class="w-full p-3 border border-pink-300 rounded-lg" placeholder="Phone Number">
+            </div>
+
+            <div>
+                <label for="message" class="block text-lg font-medium text-pink-700 mb-2">Message Box</label>
+                <textarea id="message" rows="4" class="w-full p-3 border border-pink-300 rounded-lg" placeholder="Your message"></textarea>
+            </div>
+
+            <div>
+                <label for="testimonial" class="block text-lg font-medium text-pink-700 mb-2">Testimonial / Review</label>
+                <textarea id="testimonial" rows="4" class="w-full p-3 border border-pink-300 rounded-lg" placeholder="Your testimonial or review"></textarea>
+            </div>
+        </div>
+
+        <button onclick="checkout()" class="px-6 py-2 bg-pink-200 text-pink-700 font-semibold rounded hover:bg-pink-300">
+            Checkout
+        </button>
+
+        <a href="Checkout.html" class="px-6 py-2 bg-pink-200 text-pink-700 font-semibold rounded hover:bg-pink-300 mt-4 inline-block">
+            Previous Page
+        </a>
+    </div>
+
+    <script>
+        // Fetch the selected courses from the URL
+        function getCoursesFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courses = urlParams.get('courses');
+            const prices = {
+                "Sewing": 1500,
+                "Landscaping": 1500,
+                "First Aid": 1500,
+                "Life Skills": 1500,
+                "Child Minding": 750,
+                "Cooking": 750,
+                "Garden Maintenance": 750
+            };
+            let total = 0;
+
+            if (courses) {
+                const courseArray = courses.split(',');
+                document.getElementById('courseList').textContent = courses;
+
+                courseArray.forEach(course => {
+                    total += prices[course.trim()] || 0;
+                });
+                document.getElementById('totalPrice').textContent = `Total Price: R${total.toFixed(2)}`;
+            }
+        }
+
+        // Validate input fields
+        function validateFields() {
+            let isValid = true;
+            const fields = ['name', 'surname', 'email', 'phone'];
+
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value.trim()) {
+                    input.classList.add('highlight');
+                    isValid = false;
+                } else {
+                    input.classList.remove('highlight');
+                }
+            });
+
+            return isValid;
+        }
+
+        // Handle checkout button click
+        function checkout() {
+            if (!validateFields()) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            const testimonial = document.getElementById('testimonial').value;
+            const courses = document.getElementById('courseList').textContent;
+            const total = document.getElementById('totalPrice').textContent;
+
+            // Use EmailJS to send the email
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                from_name: name,
+                to_name: "School Admin",
+                message: `${name} ${surname} has applied to your school.\n\nDetails:\nEmail: ${email}\nPhone: ${phone}\nCourses: ${courses}\nTotal Price: ${total}`,
+                reply_to: email
+            })
+            .then(() => {
+                window.location.href = "thank_you.html"; // Redirect to thank you page
+            })
+            .catch((error) => {
+                console.error("Error sending email:", error);
+            });
+        }
+
+        // Load the courses from the URL when the page is loaded
+        getCoursesFromUrl();
+    </script>
+</body>
+
+</html>
